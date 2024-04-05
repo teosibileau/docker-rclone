@@ -52,9 +52,6 @@ RUN \
 	mkdir -p /config /app /defaults /data && \
 	touch /var/lock/rclone.lock
 
-# add local files
-COPY root/ /
-
 VOLUME ["/config"]
 
 # ENTRYPOINT [ "/bin/sh" ]
