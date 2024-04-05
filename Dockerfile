@@ -20,8 +20,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
 		curl \
 		unzip \
 		xz
-# RUN OVERLAY_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-overlay/releases/latest" \
-# 	| awk '/tag_name/{print $4;exit}' FS='[""]')
+
 ENV OVERLAY_PLATFORM_ARCH="x86_64"
 ENV OVERLAY_VERSION="v3.1.6.1" 
 ENV OVERLAY_DOWNLOAD_URL="https://github.com/just-containers/s6-overlay/releases/download/${OVERLAY_VERSION}/s6-overlay-${OVERLAY_PLATFORM_ARCH}.tar.xz"
