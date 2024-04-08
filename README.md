@@ -2,17 +2,33 @@
 
 Dockerized [rclone](https://rclone.org/) - a command line program to sync files and directories to and from various cloud services.
 
-Spinoff of [tynor88/rclone](https://github.com/tynor88/docker-rclone).
+Spinoff of [tynor88/rclone](https://github.com/tynor88/docker-rclone). I needed a less asuming version to access the plain rclone command directly.
 
 ## Usage
 
 ```
 docker run -it \
-           -v ~/Desktop/JRC:/data \
-           -v ~/.config/rclone/:/config/ \
+           -v <host_data>:/data \
+           -v <host_config>:/config/ \
            rclone:latest \
-           rclone --config /config/rclone.conf sync --interactive /data s5p8backup:s5p8-backup/JRC
+           rclone --config /config/rclone.conf sync \
+           /data \
+           <target>
 ```
+
+### Synology usecase
+
+I use the following to sync my NVR videos to an s3 bucket (Synology Cloud sync sucks). I have a task scheduled every 5 minutes running:
+
+```
+docker run --rm \
+            -v /volume1/agentdvr:/data \
+            -v /var/services/homes/admin/rclone/:/config/ 
+            <rclone_image> \
+            rclone -v --config /config/rclone.conf sync --size-only --fast-list /data <s3_remote>:<s3_bucket>/agentdvr
+```
+
+It's easier to generate a working rclone config locally and copying that folder to the NAS.
 
 **Parameters**
 
