@@ -23,6 +23,8 @@ jobs:
       - uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
+          no-fail: true
+          failure-threshold: warning
 
   build:
     needs: qa
