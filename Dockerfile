@@ -1,5 +1,4 @@
 FROM alpine:latest
-MAINTAINER tynor88 <tynor@hotmail.com>
 
 # global environment settings
 ENV RCLONE_PLATFORM_ARCH="amd64"
