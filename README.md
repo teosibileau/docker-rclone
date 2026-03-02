@@ -23,7 +23,7 @@ I use the following to sync my NVR videos to an s3 bucket (Synology Cloud sync s
 ```
 docker run --rm \
             -v /volume1/agentdvr:/data \
-            -v /var/services/homes/admin/rclone/:/config/ 
+            -v /var/services/homes/admin/rclone/:/config/
             <rclone_image> \
             rclone -v --config /config/rclone.conf sync --size-only --fast-list /data <s3_remote>:<s3_bucket>/agentdvr
 ```
