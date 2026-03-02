@@ -36,21 +36,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: false
-          tags: ${{ vars.IMAGE_NAME }}:${{ github.ref_name }}
-          load: true
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
       - name: Build
         uses: docker/build-push-action@v5
         with:
@@ -60,13 +45,10 @@ jobs:
           load: true
 
       - name: Test
-        run: >
-          docker run
-          ${{ vars.IMAGE_NAME }}:${{ github.ref_name }}
-          rclone --version
+        run: docker run ${{ vars.IMAGE_NAME }}:${{ github.ref_name }} rclone --version
 
   release:
-    needs: test
+    needs: build
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
