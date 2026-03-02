@@ -1,0 +1,14 @@
+---
+
+failureThreshold: warning
+ignored:
+  - DL3008
+  - DL3015
+  - DL3016
+  - DL3059
+warn:
+  - DL3007
+  - DL4000
+  - DL3018
+  - DL4001
+  - DL3003
