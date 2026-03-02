@@ -41,11 +41,11 @@ jobs:
         with:
           context: .
           push: false
-          tags: ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
           load: true
 
       - name: Test
-        run: docker run ghcr.io/${{ github.repository }}:${{ github.ref_name }} rclone --version
+        run: docker run ghcr.io/${{ github.repository }}:${{ github.sha }} rclone --version
 
   release:
     needs: build
