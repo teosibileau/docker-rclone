@@ -28,7 +28,18 @@ docker run --rm \
             rclone -v --config /config/rclone.conf sync --size-only --fast-list /data <s3_remote>:<s3_bucket>/agentdvr
 ```
 
-It's easier to generate a working rclone config locally and copying that folder to the NAS.
+It's easier to generate a working rclone config locally and copying that folder to the NAS. You can do that by:
+
+```
+# Build the Docker image locally
+make build
+
+# Generate an rclone config file interactively
+# Creates ./config/rclone.conf
+make config
+```
+
+The `make config` command runs rclone's interactive configuration and saves the result to `./config/rclone.conf`, which you can then copy to your NAS.
 
 **Parameters**
 
