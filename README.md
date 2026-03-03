@@ -1,6 +1,6 @@
 # Docker Rclone
 
-Dockerized [rclone](https://rclone.org/) - a command line program to sync files and directories to and from various cloud services.
+Dockerized [rclone](https://rclone.org/), a command line program to sync files and directories to and from various cloud services.
 
 Spinoff of [tynor88/rclone](https://github.com/tynor88/docker-rclone). I needed a less asuming version to access the plain rclone command directly.
 
