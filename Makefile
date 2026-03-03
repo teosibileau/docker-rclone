@@ -8,4 +8,4 @@ config:
 	docker run --rm -it \
 		-v $$(pwd)/config:/config \
 		rclone:latest \
-		rclone config
+		rclone config --config /config/rclone.conf
